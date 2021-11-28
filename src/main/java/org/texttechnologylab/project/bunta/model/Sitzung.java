@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Enthält mehrere Tagsordnungspunkte
+ */
 public class Sitzung {
   private String nummer;
   private String datum;

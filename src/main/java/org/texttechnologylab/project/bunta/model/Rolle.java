@@ -2,6 +2,9 @@ package org.texttechnologylab.project.bunta.model;
 
 import java.util.Objects;
 
+/**
+ * Enthält Informationen zu besonderen Rollen einer Person
+ */
 public class Rolle {
   private String kurzbeschreibung;
   private String name;

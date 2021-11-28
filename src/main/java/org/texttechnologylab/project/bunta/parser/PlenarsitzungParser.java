@@ -1,6 +1,5 @@
 package org.texttechnologylab.project.bunta.parser;
 
-import org.texttechnologylab.project.bunta.App;
 import org.texttechnologylab.project.bunta.model.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -12,12 +11,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.Locale;
 
+/**
+ * Parst alle Daten in Resource/xml/data
+ * @author Philipp Dächert
+ * Matrikelnummer 7550687
+ */
 public final class PlenarsitzungParser {
 
   public static Sitzung parseXmlFile(String name) {
     try {
       // Bereite Dokument vor
-      File file = new File(App.class.getClassLoader().getResource("xml/data/" + name + ".xml").toURI());
+      File file = new File(PlenarsitzungParser.class.getClassLoader().getResource("xml/data/" + name + ".xml").toURI());
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
       DocumentBuilder builder = factory.newDocumentBuilder();
       Document doc = builder.parse(file);
@@ -49,6 +53,7 @@ public final class PlenarsitzungParser {
   private static Tagesordnungspunkt parseTagesordnungspunkt(Element topElement) {
     Tagesordnungspunkt top = new Tagesordnungspunkt();
 
+    top.setTagesOrdnungsUeberschrift(topElement.getAttribute("top-id"));
     // Hole reden
     NodeList reden = topElement.getElementsByTagName("rede");
     for (int j = 0; j < reden.getLength(); j++) {
@@ -92,7 +97,6 @@ public final class PlenarsitzungParser {
     }
     return rede;
   }
-
   private static Kommentar parseKommentar(Element kommentarElement) {
     Kommentar kommentar = new Kommentar();
     // Setze Kommentarinhalt, entferne Klammern
@@ -100,7 +104,9 @@ public final class PlenarsitzungParser {
         .replaceAll("\\(", "")
         .replaceAll("\\)", "");
     kommentar.setInhalt(kommentarinhalt);
+    // Teile Kommentare an "-"
     String[] inhalte = kommentarinhalt.toLowerCase(Locale.ROOT).split("-");
+    // Überprüfe ob Zuruf enthalten ist
     for (String inhalt : inhalte) {
       if (inhalt.contains("zuruf")) {
         kommentar.setZuruf(Boolean.TRUE);
@@ -171,7 +177,7 @@ public final class PlenarsitzungParser {
     }
     return new Person(id, vorname, nachname, namenszusatz, ortszusatz, rolle, titel);
   }
-
+  // Parse Redner
   private static void parseRednerListe(Document doc) {
     Node rednerliste = doc.getDocumentElement().getElementsByTagName("rednerliste").item(0);
     NodeList nList = rednerliste.getChildNodes();

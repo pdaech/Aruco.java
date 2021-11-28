@@ -2,6 +2,9 @@ package org.texttechnologylab.project.bunta.model;
 
 import java.util.Arrays;
 
+/**
+ * Alle möglichen Fraktionen denen ein Abgeordneter angehören kann
+ */
 public enum Fraktion {
   CDU_CSU("CDU/CSU"),
   SPD("SPD"),
@@ -16,7 +19,7 @@ public enum Fraktion {
   Fraktion(String name) {
     this.name = name;
   }
-
+  // Filtert einige Rechtschreibfehler im Datensatz heraus
   public static Fraktion getByNameIgnoreSpacesCaptilization(String name) {
     if(name == null) {
       return null;

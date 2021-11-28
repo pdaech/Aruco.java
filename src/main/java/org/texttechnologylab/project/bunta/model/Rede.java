@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Enthält Informationen zu einer Rede.
+ * Kann eine Vielzahl von Kommentaren beinhalten.
+ */
 public class Rede {
   private String text;
   private Person redner;
@@ -53,11 +57,11 @@ public class Rede {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Rede rede = (Rede) o;
-    return Objects.equals(text, rede.text) && Objects.equals(redner, rede.redner) && Objects.equals(tagesordnungspunkt, rede.tagesordnungspunkt) && Objects.equals(kommentare, rede.kommentare);
+    return Objects.equals(text, rede.text) && Objects.equals(kommentare, rede.kommentare);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, redner, tagesordnungspunkt, kommentare);
+    return Objects.hash(text, kommentare);
   }
 }

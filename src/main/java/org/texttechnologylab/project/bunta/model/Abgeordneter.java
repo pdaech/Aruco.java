@@ -2,6 +2,9 @@ package org.texttechnologylab.project.bunta.model;
 
 import java.util.Objects;
 
+/**
+ * Abgeordnete sind Personen und können einer Fraktion angehören
+ */
 public class Abgeordneter extends Person {
   private Fraktion fraktion;
 
@@ -12,6 +15,11 @@ public class Abgeordneter extends Person {
                       String titel, Fraktion fraktion) {
     super(id, vorname, nachname, namenszusatz, ortszusatz, rolle, titel);
     this.fraktion = fraktion;
+  }
+
+  @Override
+  public String getName() {
+    return super.getName() + " (" + fraktion.getName() + ")";
   }
 
   public Fraktion getFraktion() {

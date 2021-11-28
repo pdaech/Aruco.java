@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Enthält Variablen die ein Kommentar haben kann.
+ */
 public class Kommentar {
   private String inhalt;
   private Boolean isZuruf;
@@ -28,11 +31,11 @@ public class Kommentar {
   public List<Fraktion> getZurufsFraktion() {
     return zurufsFraktionen;
   }
-
+  // Setzt die Fraktion von der ein Zuruf kam
   public void setZurufsFraktion(List<Fraktion> zurufsFraktion) {
     this.zurufsFraktionen = zurufsFraktion;
   }
-
+  // Fügt ggf eine Weitere Fraktion hinzu, falls Zurufe von mehrern Fraktionen gleichzeitig erfolgten.
   public void addZurufsFraktion(Fraktion fraktion) {
     if (fraktion != null) {
       this.zurufsFraktionen.add(fraktion);

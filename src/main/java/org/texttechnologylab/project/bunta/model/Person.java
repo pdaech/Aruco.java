@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Enthält Informationen zu Personen.
+ */
 public class Person {
   private String id;
   private String vorname;
@@ -18,6 +21,15 @@ public class Person {
   public Person() {
   }
 
+  /**
+   * @param id
+   * @param vorname
+   * @param nachname
+   * @param namenszusatz
+   * @param ortszusatz
+   * @param rolle
+   * @param titel
+   */
   public Person(String id, String vorname, String nachname, String namenszusatz, String ortszusatz, Rolle rolle, String titel) {
     this.id = id;
     this.vorname = vorname;
@@ -39,6 +51,18 @@ public class Person {
     if (kommentar != null) {
       this.kommentare.add(kommentar);
     }
+  }
+
+  public String getName() {
+    StringBuilder sb = new StringBuilder();
+    if (titel != null) {
+      sb.append(titel).append(" ");
+    }
+    sb.append(vorname).append(" ").append(nachname);
+    if (namenszusatz != null) {
+      sb.append(" ").append(namenszusatz);
+    }
+    return sb.toString();
   }
 
   public String getNamenszusatz() {
@@ -118,7 +142,7 @@ public class Person {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Person person = (Person) o;
-    return Objects.equals(id, person.id) && Objects.equals(vorname, person.vorname) && Objects.equals(nachname, person.nachname) && Objects.equals(namenszusatz, person.namenszusatz) && Objects.equals(ortszusatz, person.ortszusatz) && Objects.equals(reden, person.reden) && Objects.equals(kommentare, person.kommentare) && Objects.equals(rolle, person.rolle) && Objects.equals(titel, person.titel);
+    return Objects.equals(id, person.id);
   }
 
   @Override
