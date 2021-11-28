@@ -21,15 +21,6 @@ public class Person {
   public Person() {
   }
 
-  /**
-   * @param id
-   * @param vorname
-   * @param nachname
-   * @param namenszusatz
-   * @param ortszusatz
-   * @param rolle
-   * @param titel
-   */
   public Person(String id, String vorname, String nachname, String namenszusatz, String ortszusatz, Rolle rolle, String titel) {
     this.id = id;
     this.vorname = vorname;

@@ -19,6 +19,7 @@ public class BundestagsAnalizer {
   private static final List<Sitzung> sitzungen = new ArrayList<>();
 
   public static void main(String[] args) {
+    System.out.println("\t\tBundestagsAnalizer von Philipp Dächert\n\t\tMatrikelnummer: 7550687");
     System.out.println("Lade Sitzungen...");
     parseXmls();
     System.out.println("Sitzungen geladen!");

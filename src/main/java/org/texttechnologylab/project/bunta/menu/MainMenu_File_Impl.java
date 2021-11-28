@@ -18,17 +18,6 @@ public class MainMenu_File_Impl extends Menu {
   }
 
   @Override
-  public void runMenu(){
-    printHeader();
-    super.runMenu();
-  }
-
-  private void printHeader() {
-    System.out.println("Header");
-    //TODO Header anpassen
-  }
-
-  @Override
   protected void printMenu() {
     System.out.println("Bitte gib eine der folgenden Zahlen ein um eine Kategorie zu wählen:");
     System.out.println("1 -- Auflistung von Rednern");
@@ -38,8 +27,8 @@ public class MainMenu_File_Impl extends Menu {
   }
 
   @Override
-  protected void ausfuehren(int auswahl){
-    switch (auswahl){
+  protected void ausfuehren(int auswahl) {
+    switch (auswahl) {
       case 0:
         setExit(true);
         System.out.println("Du hast das Programm beendet.");

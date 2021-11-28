@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RednerMenu_File_Impl extends Menu {
-  private final int MENU_LENGTH = 4;
+  private final int MENU_LENGTH = 3;
 
   public RednerMenu_File_Impl(List<Sitzung> sitzungen) {
     super(sitzungen);
@@ -27,8 +27,7 @@ public class RednerMenu_File_Impl extends Menu {
     System.out.println("1 -- Alle Redner inklusive Fraktionszugehörigkeit");
     System.out.println("2 -- Namensfilter");
     System.out.println("3 -- Auswahl einer Partei/Fraktion");
-    System.out.println("4 -- zurück");
-    System.out.println("0 -- Programm beenden");
+    System.out.println("0 -- zurück");
   }
 
   @Override
@@ -37,7 +36,6 @@ public class RednerMenu_File_Impl extends Menu {
     System.out.println();
     switch (auswahl) {
       case 0:
-        System.out.println("Du hast das Programm beendet.");
         break;
       case 1:
         System.out.println("Liste der Abgeordneten inklusive Anzahl Zeichen: ");
@@ -71,9 +69,6 @@ public class RednerMenu_File_Impl extends Menu {
           System.out.println(fraktion.getName() + ": ");
           getRednerFuerFraktion(fraktion).forEach(System.out::println);
         }
-        break;
-      case 4:
-        System.out.println("4 -- zurück");
         break;
     }
     System.out.println();

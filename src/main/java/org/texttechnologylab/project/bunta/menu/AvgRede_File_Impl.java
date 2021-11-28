@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * Untermenü für Abfragen die "Redner" returnen sollen.
  */
 public class AvgRede_File_Impl extends Menu {
-  private final int MENU_LENGTH = 4;
+  private final int MENU_LENGTH = 3;
 
   public AvgRede_File_Impl(List<Sitzung> sitzungen) {
     super(sitzungen);
@@ -36,8 +36,7 @@ public class AvgRede_File_Impl extends Menu {
     System.out.println("1 -- aller Beiträge");
     System.out.println("2 -- pro Abgeordnetem");
     System.out.println("3 -- pro Partei");
-    System.out.println("4 -- zurück");
-    System.out.println("0 -- Programm beenden");
+    System.out.println("0 -- zurück");
   }
   // Erstellung des Untermenüs um eine spezifischere Abfrage zu erstellen.
   @Override
@@ -46,7 +45,6 @@ public class AvgRede_File_Impl extends Menu {
     System.out.println();
     switch (auswahl) {
       case 0:
-        System.out.println("Du hast das Programm beendet.");
         break;
       case 1:
         System.out.println("Die durchschnittle Rededauer eines Beitrags umfasst "
@@ -61,8 +59,6 @@ public class AvgRede_File_Impl extends Menu {
         System.out.println("Liste der Partein inklusive Anzahl Zeichen: ");
         getBeitraegeFraktion().forEach((k, v) -> System.out.println(k + ": " + getZeichenMitZweiKommastellen(v)
             + " Zeichen"));
-        break;
-      case 4:
         break;
     }
     System.out.println();
