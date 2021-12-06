@@ -168,6 +168,7 @@ public class ZurufeMenu_File_Impl extends Menu {
                 if (kom.containsKey(f)) {
                   kom.put(f, kom.get(f) + 1);
                 } else {
+
                   kom.put(f, 1L);
                 }
               });
