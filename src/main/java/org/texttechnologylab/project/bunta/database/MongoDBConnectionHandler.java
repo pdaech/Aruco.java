@@ -1,6 +1,10 @@
 
 package org.texttechnologylab.project.bunta.database;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+
 public class MongoDBConnectionHandler {
   String remote_host = "prg2021.texttechnologylab.org";
   String port = "27020";
