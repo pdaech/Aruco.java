@@ -1,14 +1,14 @@
 package org.texttechnologylab.project.bunta.menu;
 
-import org.texttechnologylab.project.bunta.abstracts.Menu;
+import org.texttechnologylab.project.bunta.abstracts.Menu_MongoDB_Impl;
 import org.texttechnologylab.project.bunta.model.Sitzung;
 
 import java.util.List;
 
-public class MainMenu_File_Impl extends Menu {
+public class MainMenu_MongoDBImpl_File_Impl extends Menu_MongoDB_Impl {
   private final int MENU_LENGTH = 3;
 
-  public MainMenu_File_Impl(List<Sitzung> sitzungen) {
+  public MainMenu_MongoDBImpl_File_Impl(List<Sitzung> sitzungen) {
     super(sitzungen);
   }
 
@@ -34,7 +34,7 @@ public class MainMenu_File_Impl extends Menu {
         System.out.println("Du hast das Programm beendet.");
         break;
       case 1:
-        RednerMenu_File_Impl rednerMenu = new RednerMenu_File_Impl(sitzungen);
+        RednerMenu_MongoDBImpl_File_Impl rednerMenu = new RednerMenu_MongoDBImpl_File_Impl(sitzungen);
         rednerMenu.runMenu();
         break;
       case 2:
@@ -42,7 +42,7 @@ public class MainMenu_File_Impl extends Menu {
         avgRedeMenu.runMenu();
         break;
       case 3:
-        ZurufeMenu_File_Impl zurufeMenu = new ZurufeMenu_File_Impl(sitzungen);
+        ZurufeMenu_MongoDBImpl_File_Impl zurufeMenu = new ZurufeMenu_MongoDBImpl_File_Impl(sitzungen);
         zurufeMenu.runMenu();
         break;
     }

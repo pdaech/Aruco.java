@@ -1,18 +1,16 @@
 package org.texttechnologylab.project.bunta.menu;
 
 
-import org.texttechnologylab.project.bunta.abstracts.Menu;
+import org.texttechnologylab.project.bunta.abstracts.Menu_MongoDB_Impl;
 import org.texttechnologylab.project.bunta.model.*;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class RednerMenu_File_Impl extends Menu {
+public class RednerMenu_MongoDBImpl_File_Impl extends Menu_MongoDB_Impl {
   private final int MENU_LENGTH = 3;
 
-  public RednerMenu_File_Impl(List<Sitzung> sitzungen) {
+  public RednerMenu_MongoDBImpl_File_Impl(List<Sitzung> sitzungen) {
     super(sitzungen);
   }
 

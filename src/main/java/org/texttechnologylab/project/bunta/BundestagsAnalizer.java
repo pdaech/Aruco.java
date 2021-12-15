@@ -1,6 +1,6 @@
 package org.texttechnologylab.project.bunta;
 
-import org.texttechnologylab.project.bunta.menu.MainMenu_File_Impl;
+import org.texttechnologylab.project.bunta.menu.MainMenu_MongoDBImpl_File_Impl;
 import org.texttechnologylab.project.bunta.model.Sitzung;
 import org.texttechnologylab.project.bunta.parser.PlenarsitzungParser;
 
@@ -23,7 +23,7 @@ public class BundestagsAnalizer {
     System.out.println("Lade Sitzungen...");
     parseXmls();
     System.out.println("Sitzungen geladen!");
-    MainMenu_File_Impl mainMenu = new MainMenu_File_Impl(sitzungen);
+    MainMenu_MongoDBImpl_File_Impl mainMenu = new MainMenu_MongoDBImpl_File_Impl(sitzungen);
     mainMenu.runMenu();
   }
 

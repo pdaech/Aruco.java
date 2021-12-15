@@ -1,24 +1,20 @@
 package org.texttechnologylab.project.bunta.menu;
 
 
-import org.texttechnologylab.project.bunta.abstracts.Menu;
+import org.texttechnologylab.project.bunta.abstracts.Menu_MongoDB_Impl;
 import org.texttechnologylab.project.bunta.model.Abgeordneter;
 import org.texttechnologylab.project.bunta.model.Rede;
 import org.texttechnologylab.project.bunta.model.Sitzung;
 import org.texttechnologylab.project.bunta.model.Tagesordnungspunkt;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
  * Untermenü für Abfragen die "Redner" returnen sollen.
  */
-public class AvgRede_File_Impl extends Menu {
+public class AvgRede_File_Impl extends Menu_MongoDB_Impl {
   private final int MENU_LENGTH = 3;
 
   public AvgRede_File_Impl(List<Sitzung> sitzungen) {

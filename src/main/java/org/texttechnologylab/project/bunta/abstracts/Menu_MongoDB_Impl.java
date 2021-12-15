@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * Hier sind die Rahmenbedingungen für Menüs gegeben.
  */
-public abstract class Menu {
+public abstract class Menu_MongoDB_Impl {
   protected boolean exit;
   protected final List<Sitzung> sitzungen;
 
@@ -22,7 +22,7 @@ public abstract class Menu {
     this.exit = exit;
   }
 
-  public Menu(List<Sitzung> sitzungen) {
+  public Menu_MongoDB_Impl(List<Sitzung> sitzungen) {
     this.sitzungen = sitzungen;
   }
 
