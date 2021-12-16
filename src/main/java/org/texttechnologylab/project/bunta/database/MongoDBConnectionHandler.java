@@ -7,16 +7,20 @@ import com.mongodb.client.MongoDatabase;
 import org.texttechnologylab.project.bunta.util.PropertyUtil;
 
 public class MongoDBConnectionHandler {
-  public void connect() {
+  public static void connect() {
     String host = PropertyUtil.getRemoteHost();
     String database = PropertyUtil.getRemoteDatabase();
     String user = PropertyUtil.getRemoteUser();
     String password = PropertyUtil.getRemotePassword();
     String port = PropertyUtil.getRemotePort();
     String uri = "mongodb://" + database + ":" + password + "@" + host + ":" + port + "/" + database + "?authSource=" + user;
+    try {
+      MongoClient client = MongoClients.create(uri);
+      MongoDatabase db = client.getDatabase(user);
+    } catch (Exception e) {
+      System.out.println("connection error");
+    }
 
-    MongoClient client = MongoClients.create(uri);
-    MongoDatabase db = client.getDatabase(user);
   }
 }
 

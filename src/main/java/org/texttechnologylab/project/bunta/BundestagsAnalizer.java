@@ -23,6 +23,7 @@ public class BundestagsAnalizer {
 
   public static void main(String[] args) {
     System.out.println("\t\tBundestagsAnalizer von Philipp Dächert\n\t\tMatrikelnummer: 7550687");
+    MongoDBConnectionHandler.connect();
     System.out.println("Lade Sitzungen...");
     parseXmls();
     System.out.println("Sitzungen geladen!");
