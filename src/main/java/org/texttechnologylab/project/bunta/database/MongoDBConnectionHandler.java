@@ -4,22 +4,19 @@ package org.texttechnologylab.project.bunta.database;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.texttechnologylab.project.bunta.util.PropertyUtil;
 
 public class MongoDBConnectionHandler {
-  String remote_host = "prg2021.texttechnologylab.org";
-  String remote_user = "PRG_WiSe21_195";
-  String remote_password = "4XCBb741";
-  String remote_port = "27020";
-  String uri = "mongodb://" + remote_user + ":" + remote_password + "@" + remote_host + ":" + remote_port +  "/" + remote_user + "?authSource=" + remote_user;
+  public void connect() {
+    String host = PropertyUtil.getRemoteHost();
+    String database = PropertyUtil.getRemoteDatabase();
+    String user = PropertyUtil.getRemoteUser();
+    String password = PropertyUtil.getRemotePassword();
+    String port = PropertyUtil.getRemotePort();
+    String uri = "mongodb://" + database + ":" + password + "@" + host + ":" + port + "/" + database + "?authSource=" + user;
 
-  try (MongoClient client = MongoClients.create(uri)) {
-      List<Document> databases = client.listDatabases().into(new ArrayList<>());
-      databases.forEach(db -> System.out.println(db.toJson()));
+    MongoClient client = MongoClients.create(uri);
+    MongoDatabase db = client.getDatabase(user);
   }
-  MongoDatabase db = client.getDatabase(remote_user);
 }
 

@@ -1,14 +1,17 @@
 package org.texttechnologylab.project.bunta;
 
+import org.texttechnologylab.project.bunta.database.MongoDBConnectionHandler;
 import org.texttechnologylab.project.bunta.menu.MainMenu_MongoDBImpl_File_Impl;
 import org.texttechnologylab.project.bunta.model.Sitzung;
 import org.texttechnologylab.project.bunta.parser.PlenarsitzungParser;
+import org.texttechnologylab.project.bunta.util.PropertyUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Der BundestagsAnalizer dient zum Einlesen von Daten und zur Analyse dieser.
+ *
  * @author Philipp Dächert s3391912@stud.uni-frankfurt.de
  * Matrikelnummer: 7550687
  * @version 1.0
@@ -25,6 +28,9 @@ public class BundestagsAnalizer {
     System.out.println("Sitzungen geladen!");
     MainMenu_MongoDBImpl_File_Impl mainMenu = new MainMenu_MongoDBImpl_File_Impl(sitzungen);
     mainMenu.runMenu();
+//    System.out.println("mongodb://" + PropertyUtil.getRemoteDatabase() + ":" + PropertyUtil.getRemotePassword() + "@"
+//            + PropertyUtil.getRemoteHost() + ":" + PropertyUtil.getRemotePort() + "/" + PropertyUtil.getRemoteDatabase()
+//            + "?authSource=" + PropertyUtil.getRemoteUser());
   }
 
   private static void parseXmls() {
