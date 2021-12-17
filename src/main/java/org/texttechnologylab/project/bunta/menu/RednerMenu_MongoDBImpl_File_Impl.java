@@ -1,7 +1,10 @@
 package org.texttechnologylab.project.bunta.menu;
 
 
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
 import org.texttechnologylab.project.bunta.abstracts.Menu_MongoDB_Impl;
+import org.texttechnologylab.project.bunta.database.MongoDBConnectionHandler;
 import org.texttechnologylab.project.bunta.model.*;
 
 import java.util.*;
@@ -73,13 +76,13 @@ public class RednerMenu_MongoDBImpl_File_Impl extends Menu_MongoDB_Impl {
   }
 
   private List<String> getAlleRedner() {
-    return sitzungen.stream()
-        .map(Sitzung::getTagesordnungspunkte).flatMap(List::stream) // Alle Reden
-        .map(Tagesordnungspunkt::getReden).flatMap(List::stream) // Alle Tagesordnungspunkte
-        .map(Rede::getRedner) // alle Redner
-        .map(Person::getName) // Namen der Personen
-        .distinct() // Einzigartig
-        .collect(Collectors.toList()); // In Liste
+      return sitzungen.stream()
+          .map(Sitzung::getTagesordnungspunkte).flatMap(List::stream) // Alle Reden
+          .map(Tagesordnungspunkt::getReden).flatMap(List::stream) // Alle Tagesordnungspunkte
+          .map(Rede::getRedner) // alle Redner
+          .map(Person::getName) // Namen der Personen
+          .distinct() // Einzigartig
+          .collect(Collectors.toList()); // In Liste
   }
 
   private List<String> getRednerFuerFraktion(Fraktion fraktion) {

@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public abstract class Menu_MongoDB_Impl {
   protected boolean exit;
-  protected final List<Sitzung> sitzungen;
+  protected List<Sitzung> sitzungen;
 
   protected boolean isExit() {
     return exit;

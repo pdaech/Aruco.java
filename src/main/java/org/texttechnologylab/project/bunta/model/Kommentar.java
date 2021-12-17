@@ -1,5 +1,7 @@
 package org.texttechnologylab.project.bunta.model;
 
+import org.texttechnologylab.project.bunta.abstracts.MongoDBDocument;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -7,9 +9,11 @@ import java.util.Objects;
 /**
  * Enthält Variablen die ein Kommentar haben kann.
  */
-public class Kommentar {
+public class Kommentar extends MongoDBDocument {
+  public static final String MONGO_DB_COLLECTION_NAME = "Kommentar";
   private String inhalt;
   private Boolean isZuruf;
+  private Rede rede;
   private List<Fraktion> zurufsFraktionen = new ArrayList<>();
 
   public String getInhalt() {
@@ -26,6 +30,14 @@ public class Kommentar {
 
   public void setZuruf(Boolean zuruf) {
     isZuruf = zuruf;
+  }
+
+  public Rede getRede() {
+    return this.rede;
+  }
+
+  public void setRede(Rede rede) {
+    this.rede = rede;
   }
 
   public List<Fraktion> getZurufsFraktion() {

@@ -1,12 +1,17 @@
 package org.texttechnologylab.project.bunta.menu;
 
 import org.texttechnologylab.project.bunta.abstracts.Menu_MongoDB_Impl;
+import org.texttechnologylab.project.bunta.database.*;
+import org.texttechnologylab.project.bunta.model.Kommentar;
+import org.texttechnologylab.project.bunta.model.Rede;
 import org.texttechnologylab.project.bunta.model.Sitzung;
+import org.texttechnologylab.project.bunta.model.Tagesordnungspunkt;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainMenu_MongoDBImpl_File_Impl extends Menu_MongoDB_Impl {
-  private final int MENU_LENGTH = 3;
+  private final int MENU_LENGTH = 4;
 
   public MainMenu_MongoDBImpl_File_Impl(List<Sitzung> sitzungen) {
     super(sitzungen);
@@ -23,6 +28,7 @@ public class MainMenu_MongoDBImpl_File_Impl extends Menu_MongoDB_Impl {
     System.out.println("1 -- Auflistung von Rednern");
     System.out.println("2 -- Länge der durchschnittlichen Redebeiträge");
     System.out.println("3 -- Redebeiträge mit den meisten Zurufen");
+    System.out.println("4 -- In DB uebernehmen");
     System.out.println("0 -- Programm beenden");
   }
 
@@ -45,6 +51,29 @@ public class MainMenu_MongoDBImpl_File_Impl extends Menu_MongoDB_Impl {
         ZurufeMenu_MongoDBImpl_File_Impl zurufeMenu = new ZurufeMenu_MongoDBImpl_File_Impl(sitzungen);
         zurufeMenu.runMenu();
         break;
+      case 4:
+        upload();
+        break;
+    }
+  }
+
+  private void upload() {
+    SitzungRepository_MongoDB_Impl sitzungRepository = new SitzungRepository_MongoDB_Impl();
+    TagesordnungspunkteRepository_MongoDB_Impl topRepository = new TagesordnungspunkteRepository_MongoDB_Impl();
+    PersonRepository_MongoDB_Impl personRepository = new PersonRepository_MongoDB_Impl();
+    RedeRepository_MongoDB_Impl redeRepository = new RedeRepository_MongoDB_Impl();
+    KommentarRepository_MongoDB_Impl kommentarRepository = new KommentarRepository_MongoDB_Impl();
+    for (Sitzung sitzung : sitzungen) {
+      System.out.println("Speichere Sitzung: " + sitzung.getNummer());
+      sitzung = sitzungRepository.persist(sitzung);
+      for (Tagesordnungspunkt tagesordnungspunkt : sitzung.getTagesordnungspunkte()) {
+        tagesordnungspunkt = topRepository.persist(tagesordnungspunkt);
+        for (Rede rede : tagesordnungspunkt.getReden()) {
+          rede.setRedner(personRepository.persist(rede.getRedner()));
+          rede = redeRepository.persist(rede);
+          rede.getKommentare().forEach(kommentarRepository::persist);
+        }
+      }
     }
   }
 }

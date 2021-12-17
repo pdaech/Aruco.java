@@ -1,5 +1,7 @@
 package org.texttechnologylab.project.bunta.model;
 
+import org.texttechnologylab.project.bunta.abstracts.MongoDBDocument;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,7 +10,8 @@ import java.util.Objects;
  * Enthält Informationen zu einer Rede.
  * Kann eine Vielzahl von Kommentaren beinhalten.
  */
-public class Rede {
+public class Rede extends MongoDBDocument {
+  public static final String MONGO_DB_COLLECTION_NAME = "Reden";
   private String text;
   private Person redner;
   private Tagesordnungspunkt tagesordnungspunkt;
@@ -49,6 +52,7 @@ public class Rede {
   public void addKommentar(Kommentar kommentar) {
     if (kommentar != null) {
       this.kommentare.add(kommentar);
+      kommentar.setRede(this);
     }
   }
 

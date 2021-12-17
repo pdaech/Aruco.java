@@ -11,9 +11,9 @@ public class Abgeordneter extends Person {
   public Abgeordneter() {
   }
 
-  public Abgeordneter(String id, String vorname, String nachname, String namenszusatz, String ortszusatz, Rolle rolle,
-                      String titel, Fraktion fraktion) {
-    super(id, vorname, nachname, namenszusatz, ortszusatz, rolle, titel);
+  public Abgeordneter(String id, String vorname, String nachname, String namenszusatz, String ortszusatz,
+                      String rolleKurz, String rolleName, String titel, Fraktion fraktion) {
+    super(id, vorname, nachname, namenszusatz, ortszusatz, rolleKurz, rolleName, titel);
     this.fraktion = fraktion;
   }
 

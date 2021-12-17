@@ -1,10 +1,8 @@
 package org.texttechnologylab.project.bunta;
 
-import org.texttechnologylab.project.bunta.database.MongoDBConnectionHandler;
 import org.texttechnologylab.project.bunta.menu.MainMenu_MongoDBImpl_File_Impl;
 import org.texttechnologylab.project.bunta.model.Sitzung;
 import org.texttechnologylab.project.bunta.parser.PlenarsitzungParser;
-import org.texttechnologylab.project.bunta.util.PropertyUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,15 +21,11 @@ public class BundestagsAnalizer {
 
   public static void main(String[] args) {
     System.out.println("\t\tBundestagsAnalizer von Philipp Dächert\n\t\tMatrikelnummer: 7550687");
-    MongoDBConnectionHandler.connect();
     System.out.println("Lade Sitzungen...");
     parseXmls();
     System.out.println("Sitzungen geladen!");
     MainMenu_MongoDBImpl_File_Impl mainMenu = new MainMenu_MongoDBImpl_File_Impl(sitzungen);
     mainMenu.runMenu();
-//    System.out.println("mongodb://" + PropertyUtil.getRemoteDatabase() + ":" + PropertyUtil.getRemotePassword() + "@"
-//            + PropertyUtil.getRemoteHost() + ":" + PropertyUtil.getRemotePort() + "/" + PropertyUtil.getRemoteDatabase()
-//            + "?authSource=" + PropertyUtil.getRemoteUser());
   }
 
   private static void parseXmls() {
@@ -43,3 +37,5 @@ public class BundestagsAnalizer {
     }
   }
 }
+
+
